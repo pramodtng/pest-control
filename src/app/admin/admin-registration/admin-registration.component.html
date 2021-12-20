@@ -1,0 +1,43 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+      <h1>Pest Control System</h1>
+      <div class="d-flex">
+        <div class="wrap">
+          <button class="button"><a routerLink="/login">User</a></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+              <div class="card">
+                  <div class="text-center">
+                      <h2>Registration</h2>
+                  </div>
+                  <form [formGroup]="adminSignUpForm" (ngSubmit)="signUpAdmin()">
+                      <div class="mb-3">
+                          <!-- <label for="exampleFormControlInput1" class="form-label">Name</label> -->
+                          <input type="text" formControlName = "name" class="form-control" id="exampleFormControlInput1" placeholder="Name" >
+                          <small *ngIf="adminSignUpForm.controls['name'].dirty && adminSignUpForm.hasError('required', 'name')" class="text-danger">*Name is required.</small>
+                        </div>
+                        <div class="mb-3">
+                          <!-- <label for="exampleFormControlInput1" class="form-label">Email</label> -->
+                          <input type="email" formControlName ="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                          <small *ngIf="adminSignUpForm.controls['email'].dirty && adminSignUpForm.hasError('required', 'email')" class="text-danger">*Email is required.</small>
+                        </div>
+                        <div class="mb-3">
+                          <!-- <label for="exampleFormControlInput1" class="form-label">Password</label> -->
+                          <input type="password" formControlName ="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+                          <small *ngIf="adminSignUpForm.controls['password'].dirty && adminSignUpForm.hasError('required', 'password')" class="text-danger">*Pass is required.</small>
+                        </div>
+                        <div class="d-grid gap-2">
+                          <button type="submit" [disabled]="adminSignUpForm.invalid" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                    <a routerLink="/admin-login">Already registered? Login</a>
+              </div>
+          </div>
+      </div>
+  </div>

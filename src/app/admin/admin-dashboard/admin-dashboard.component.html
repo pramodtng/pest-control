@@ -1,0 +1,41 @@
+<nav class="navbar">
+    <div class="container-fluid">
+      <h2>Admin Dashboard</h2>
+      <div class="d-flex">
+        <button (click)="logoutAdmin()" class="btn btn-sm btn-success">Log out</button> 
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search any Dzongkhag..." [(ngModel)]="filterText">
+    </div>
+  
+    <table class="table table-bordered" style="text-align: center;">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Contact Number</th>
+          <th scope="col">Dzongkhag</th>
+          <th scope="col">Gewog</th>
+          <th scope="col">Village</th>
+          <th scope="col">Image</th>
+          <th scope="col">Date of the incident</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of farmerComplaintData | filter: filterText">
+          <td> {{row.id}} </td>
+          <td> {{row.name}} </td>
+          <td> {{row.phoneNumber}} </td>
+          <td> {{row.dzongkhag}} </td>
+          <td> {{row.gewog}} </td>
+          <td> {{row.village}} </td>
+          <td><img [src] = row.image></td>
+          <td> {{row.date}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

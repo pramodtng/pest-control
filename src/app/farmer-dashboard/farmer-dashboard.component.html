@@ -1,0 +1,123 @@
+<nav class="navbar">
+    <div class="container-fluid">
+      <h2>Farmer Dashboard</h2>
+      <div class="d-flex">
+        <button (click)="addNewComplaints()" type="button" class="btn btn-outline-primary text-light btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">New Complaint</button>
+        <button (click)="logout()" class="btn btn-sm btn-success">Log out</button> 
+      </div>
+    </div>
+  </nav>
+
+  <table class="container table table-hover table-sm table-bordered table-responsive-sm" style="text-align: center;">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col">Dzongkhag</th>
+        <th scope="col">Gewog</th>
+        <th scope="col">Village</th>
+        <th scope="col">Image</th>
+        <th scope="col">Date of the incident</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of farmerComplaintData">
+        <td> {{row.id}} </td>
+        <td> {{row.name}} </td>
+        <td> {{row.phoneNumber}} </td>
+        <td> {{row.dzongkhag}} </td>
+        <td> {{row.gewog}} </td>
+        <td> {{row.village}} </td>
+        <td><img [src] = row.image></td>
+        <td> {{row.date}} </td>
+        <th>
+          <button (click)="editComplaints(row)" class="btn btn-sm btn-success btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" data-toggle="tooltip" data-placement="top" title="Edit">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button (click)="deleteComplaint(row)" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Delete">
+            <i class="fas fa-trash"></i>
+          </button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Report the incident with following details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup] = "formValue" style="border-radius: 50px;">
+          <div class="mb-3">
+            <!-- <label for="exampleFormControlInput1" class="form-label">Name</label> -->
+            <input type="text" formControlName = "name" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="Name">
+            <small *ngIf="formValue.controls['name'].dirty && formValue.hasError('required', 'name')" class="text-danger">*Name is required.</small>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="exampleFormControlInput1" class="form-label">Contact</label> -->
+            <input type="text" formControlName ="phoneNumber" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="Contact">
+            <small *ngIf="formValue.controls['phoneNumber'].dirty && formValue.hasError('required', 'phoneNumber')" class="text-danger">*Phone Number is required.</small>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="exampleFormControlInput1" class="form-label form-control-sm">Dzongkhag</label> -->
+            <select class="form-select form-select-sm" formControlName = "dzongkhag" aria-label="Default select example">
+              <option value="">Dzongkhag</option>
+              <option value="Bumthang">Bumthang</option>
+              <option value="Chhukha">Chhukha</option>
+              <option value="Dagana">Dagana</option>
+              <option value="Gasa">Gasa</option>
+              <option value="5">Haa</option>
+              <option value="Haa">Lhuentse</option>
+              <option value="Monggar">Monggar</option>
+              <option value="Paro">Paro</option>
+              <option value="Pema Gatshel">Pema Gatshel</option>
+              <option value="Punakha">Punakha</option>
+              <option value="Samdrup Jongkhar">Samdrup Jongkhar</option>
+              <option value="Samtse">Samtse</option>
+              <option value="Sarpang">Sarpang</option>
+              <option value="Tashi Yangtse">Tashi Yangtse</option>
+              <option value="Thimphu">Thimphu</option>
+              <option value="Trashigang">Trashigang</option>
+              <option value="Trongsa">Trongsa</option>
+              <option value="Tsirang">Tsirang</option>
+              <option value="Wangdue Phodrang">Wangdue Phodrang</option>
+              <option value="Zhemgang">Zhemgang</option>
+            </select>
+            <small *ngIf="formValue.controls['dzongkhag'].dirty && formValue.hasError('required', 'dzongkhag')" class="text-danger">*Dzongkhag is required.</small>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="exampleFormControlInput1" class="form-label">Gewog</label> -->
+            <input type="text" formControlName ="gewog" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="Gewog">
+            <small *ngIf="formValue.controls['gewog'].dirty && formValue.hasError('required', 'gewog')" class="text-danger">*Gewog is required.</small>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="exampleFormControlInput1" class="form-label">Village</label> -->
+            <input type="text" formControlName="village" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="Village">
+            <small *ngIf="formValue.controls['village'].dirty && formValue.hasError('required', 'village')" class="text-danger">*Village is required.</small>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="formFileSm" class="form-label">Image</label> -->
+            <input class="form-control form-control-sm" formControlName="image" id="formFileSm" type="file"  accept="image/png, image/jpeg" placeholder="Image">
+            <small *ngIf="formValue.controls['image'].dirty && formValue.hasError('required', 'image')" class="text-danger">*Image is required.</small>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="formFileSm" id="cancel" class="form-label">Date of the Incident</label> -->
+            <input type="date" formControlName="date" class="form-control" id="exampleFormControlInput1" placeholder="Date">
+            <small *ngIf="formValue.controls['date'].dirty && formValue.hasError('required', 'date')" class="text-danger">*Date is required.</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" [disabled]="formValue.invalid" *ngIf="showAdd" (click)="postFarmerComplaintDetails()" class="btn btn-primary">Add</button>
+        <button type="button" (click)="updateComplaintDetails()" *ngIf="showUpdate" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

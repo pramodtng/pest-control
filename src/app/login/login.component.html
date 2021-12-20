@@ -1,0 +1,40 @@
+<nav class="navbar">
+    <div class="container-fluid">
+      <h1>Pest Control System</h1>
+      <div class="d-flex">
+        <div class="wrap">
+          <button class="button"><a routerLink="/admin-login">Admin</a></button>
+        </div>
+        <!-- <button type="button" class="btn btn-outline-primary text-light btn-lg"><a routerLink="/admin-login">Admin</a></button> -->
+      </div>
+    </div>
+  </nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h2>Login</h2>
+                </div>
+                <form [formGroup]="farmerLoginForm" (ngSubmit)="loginFarmers()">
+                    <div class="mb-3">
+                        <!-- <label for="exampleFormControlInput1" class="form-label">Email</label> -->
+                        <input type="email" formControlName = "email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                        <small *ngIf="farmerLoginForm.controls['email'].dirty && farmerLoginForm.hasError('required', 'email')" class="text-danger">*Email is required.</small>
+                      </div>
+                      <div class="mb-3">
+                        <!-- <label for="exampleFormControlInput1" class="form-label">Password</label> -->
+                        <input type="password" formControlName ="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+                        <span *ngIf="farmerLoginForm.controls['password'].dirty && farmerLoginForm.hasError('required', 'password')" class="text-danger">*Password is required.</span>
+                      </div>
+                      <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" [disabled]="farmerLoginForm.invalid" class="btn btn-primary mt-6">Login</button>
+                      </div>
+                  </form>
+                  <a routerLink="/registration">Don't have an account? Create new account</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h1>Pest Control System</h1>
+    <div class="d-flex">
+      <div class="wrap">
+        <button class="button"><a routerLink="/admin-registration">Admin</a></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h2>Registration</h2>
+                </div>
+                <form [formGroup]="farmerSignUpForm" (ngSubmit)="signUpFarmers()">
+                    <div class="mb-3">
+                        <!-- <label for="exampleFormControlInput1" class="form-label">Name</label> -->
+                        <input type="text" formControlName = "name" class="form-control" id="exampleFormControlInput1" placeholder="Name" >
+                        <small *ngIf="farmerSignUpForm.controls['name'].dirty && farmerSignUpForm.hasError('required', 'name')" class="text-danger">*Name is required.</small>
+                      </div>
+                      <div class="mb-3">
+                        <!-- <label for="exampleFormControlInput1" class="form-label">Email</label> -->
+                        <input type="email" formControlName ="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                        <small *ngIf="farmerSignUpForm.controls['email'].dirty && farmerSignUpForm.hasError('required', 'email')" class="text-danger">*Email is required.</small>
+                      </div>
+                      <div class="mb-3">
+                        <!-- <label for="exampleFormControlInput1" class="form-label">Password</label> -->
+                        <input type="password" formControlName ="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+                        <small *ngIf="farmerSignUpForm.controls['password'].dirty && farmerSignUpForm.hasError('required', 'password')" class="text-danger">*Password is required.</small>
+                      </div>
+                    <button type="submit" [disabled]="farmerSignUpForm.invalid" class="btn btn-primary">Register</button>
+                  </form>
+                  <a routerLink="/login">Already registered?</a>
+            </div>
+        </div>
+    </div>
+</div>
