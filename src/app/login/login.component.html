@@ -30,7 +30,7 @@
                         <span *ngIf="farmerLoginForm.controls['password'].dirty && farmerLoginForm.hasError('required', 'password')" class="text-danger">*Password is required.</span>
                       </div>
                       <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" [disabled]="farmerLoginForm.invalid" class="btn btn-primary mt-6">Login</button>
+                        <button type="submit" [disabled]="farmerLoginForm.invalid" class="btn btn-outline-success">Login</button>
                       </div>
                   </form>
                   <a routerLink="/registration">Don't have an account? Create new account</a>

@@ -32,7 +32,9 @@
                         <input type="password" formControlName ="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
                         <small *ngIf="farmerSignUpForm.controls['password'].dirty && farmerSignUpForm.hasError('required', 'password')" class="text-danger">*Password is required.</small>
                       </div>
-                    <button type="submit" [disabled]="farmerSignUpForm.invalid" class="btn btn-primary">Register</button>
+                      <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" [disabled]="farmerSignUpForm.invalid" class="btn btn-outline-success">Register</button>
+                      </div>
                   </form>
                   <a routerLink="/login">Already registered?</a>
             </div>

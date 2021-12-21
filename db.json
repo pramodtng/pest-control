@@ -1,48 +1,7 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "name": "Pramod",
-      "phoneNumber": "17941689",
-      "dzongkhag": "Monggar",
-      "gewog": "dfgfg",
-      "village": "dfgfg",
-      "image": null,
-      "date": "2021-12-22"
-    },
-    {
-      "id": 2,
-      "name": "Pramod",
-      "phoneNumber": "17941689",
-      "dzongkhag": "Haa",
-      "gewog": "bgfhgf",
-      "village": "fghfgh",
-      "image": "assets/image.png",
-      "date": "2021-12-08"
-    }
-  ],
-  "signupFarmers": [
-    {
-      "name": "Pramod",
-      "email": "hellothered12@gmail.com",
-      "password": "hello",
-      "id": 1
-    }
-  ],
-  "signupAdmin": [
-    {
-      "name": "Pramod Tamang",
-      "email": "psingay96@gmail.com",
-      "password": "pramod",
-      "id": 1
-    },
-    {
-      "name": "prad",
-      "email": "hellothered12@gmail.com",
-      "password": "hello",
-      "id": 2
-    }
-  ],
+  "posts": [],
+  "signupFarmers": [],
+  "signupAdmin": [],
   "profile": {
     "name": "typicode"
   }
